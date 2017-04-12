@@ -33,13 +33,9 @@ def article_edit(request, article_id=None):
 def article_detail(request, article_id):
     obj = get_object_or_404(Article, pk=article_id)
     return render(request, 'blog/article.html', {'object': obj})
-<<<<<<< HEAD
 
 def article_delete(request, article_id=None):
-    article = None
-    if article_id:
-        article = get_object_or_404(Article, pk=article_id)
+    article = get_object_or_404(Article, pk=article_id)
     article.delete()
     return HttpResponseRedirect(reverse_lazy('index'))
-=======
->>>>>>> 1d2d61270e3f291791cf304020acf22370771231
+
