@@ -23,7 +23,6 @@ def article_edit(request, article_id=None):
 
     form = ArticleForm(request.POST or None, instance=article)
     if form.is_valid():
-        article = Article.objects.get(pk=article_id)
         form.save()
         return HttpResponseRedirect(reverse_lazy('index'))
 
