@@ -16,35 +16,27 @@ def index(request):
     return render(request, 'blog/index.html', context)
 
 
-def create_article(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = ArticleForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            new_article = form.save()
-            return HttpResponseRedirect(reverse_lazy('index'))
+def article_edit(request, article_id=None):
+    article = None
+    if article_id:
+        article = get_object_or_404(Article, pk=article_id)
 
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = ArticleForm()
+    form = ArticleForm(request.POST or None, instance=article)
+    if form.is_valid():
+        article = Article.objects.get(pk=article_id)
+        form.save()
+        return HttpResponseRedirect(reverse_lazy('index'))
 
-    return render(request, 'blog/create_article.html', {'form': form})
+    return render(request, 'blog/edit.html', {'form': form})
 
 
 def article_detail(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
-    return render(request, 'blog/article.html', {'Object': article})
+    obj = get_object_or_404(Article, pk=article_id)
+    return render(request, 'blog/article.html', {'object': obj})
 
-
-def article_edit(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
-    article_form = ArticleForm(request.POST or None, instance=article)
-    if article_form.is_valid():
-        article = Article.objects.get(pk=article_id)
-        article_form.save()
-        return HttpResponseRedirect(reverse_lazy('index'))
-
-
-    return render(request, {'form': article_form}, 'blog/edit.html')
+def article_delete(request, article_id=None):
+    article = None
+    if article_id:
+        article = get_object_or_404(Article, pk=article_id)
+    article.delete()
+    return HttpResponseRedirect(reverse_lazy('index'))

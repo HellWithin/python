@@ -7,7 +7,8 @@
 <body>
     <h1>Article title - {{ Object.title }}</h1>
     <h2>Username - {{ Object.user }}</h2>
-    <p>{{ Object.text }}</p>
-    <p>Created at: {{ Object.pub_date }} Updated at: {{ Object.change_date }}</p>
+    <p>{{ object.text }}</p>
+    <p>Created at: {{ object.pub_date }} Updated at: {{ object.change_date }}</p>
+    <a href="{% url 'article_delete' object.id %}">Delete article</a>
 </body>
 </html>
