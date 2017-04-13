@@ -22,15 +22,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Basic Blog</a>
+            <a class="navbar-brand" href="{% url 'index' %}">Basic Blog</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/create/">Create article</a>
+                    <a href="{% url 'article_create' %}">Create article</a>
+                </li>
+                <li>
+                    <a href="{% url 'admin:index' %}">Administration</a>
                 </li>
             </ul>
+            {% block search %}
+
+            {% endblock %}
         </div>
+
     </div>
 </nav>
 
