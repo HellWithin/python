@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
-    </form>
-</body>
-</html>
+{% extends "blog/base.html" %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+{% bootstrap_button "Save" button_type="submit" button_class="btn btn-default" %}
+</form>
+{% endblock %}
+
+

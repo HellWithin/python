@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Article title - {{ Object.title }}</h1>
-    <h2>Username - {{ Object.user }}</h2>
-    <p>{{ object.text }}</p>
-    <p>Created at: {{ object.pub_date }} Updated at: {{ object.change_date }}</p>
-    <a href="{% url 'article_delete' object.id %}">Delete article</a>
-</body>
-</html>
+{% extends "blog/base.html" %}
+
+{% block page_title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<h4>Author - {{ object.user }}</h4>
+<p>{{ object.text }}</p>
+<p>Created at: {{ object.pub_date }} Updated at: {{ object.change_date }}</p>
+<a type="button" class="btn btn-primary" href="{% url 'article_detail' object.id %}edit/">Edit article</a>
+<a type="button" class="btn btn-danger" href="{% url 'article_delete' object.id %}">Delete article</a>
+{% endblock %}

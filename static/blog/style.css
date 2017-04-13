@@ -1,0 +1,16 @@
+body {
+    padding-top: 70px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+.col-md-5 h4 {
+    color: grey;
+    font-size: 14px;
+}
