@@ -15,4 +15,4 @@ class Article(forms.ModelForm):
 
 
 class Search(forms.Form):
-    keyword = forms.CharField(max_length=20, min_length=1)
+    keyword = forms.CharField(max_length=20, min_length=1, widget=forms.TextInput(attrs={'class': 'form-control'}))

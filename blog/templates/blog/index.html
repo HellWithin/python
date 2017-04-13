@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-5">
                     <h3>{{ article.title }}</h3>
-                    <p>{{ article.text|truncatewords:10|truncatechars:50 }}</p>
+                    <p>{{ article.text|truncatechars:200 }}</p>
                     <h4>By {{ article.user|default_if_none:"Anonymous" }}</h4>
                     <a class="btn btn-primary" href="{% url 'article_detail' article.id %}">View article <span
                             class="glyphicon glyphicon-chevron-right"></span></a>
