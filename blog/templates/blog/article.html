@@ -4,7 +4,7 @@
 
 {% block content %}
     <p>{{ object.text }}</p>
-    <h4>By {{ object.user|default_if_none:"Anonymous" }}</h4>
+    <h4 class="author">By {{ object.user|default_if_none:"Anonymous" }}</h4>
     <p>Created at: {{ object.pub_date }} Updated at: {{ object.change_date }}</p>
     <a type="button" class="btn btn-primary" href="{% url 'article_detail' object.id %}edit/">Edit article</a>
     <a type="button" class="btn btn-danger" href="{% url 'article_delete' object.id %}">Delete article</a>

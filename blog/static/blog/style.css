@@ -1,5 +1,6 @@
 body {
     padding-top: 70px;
+    word-wrap: break-word;
 }
 
 footer {
@@ -10,7 +11,9 @@ h3 {
     margin-top: 0;
 }
 
-.col-md-5 h4 {
+.author {
     color: grey;
     font-size: 14px;
 }
+
+
